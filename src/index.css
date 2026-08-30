@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base styles ──────────────────────────────────────────────────── */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif;
+  overscroll-behavior: none;
+}
+
+/* Dark mode body */
+.dark body {
+  background-color: #0F172A;
+  color: #E2E8F0;
+}
+
+/* ── Headings use Poppins ─────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: 'Poppins', 'Noto Sans Devanagari', system-ui, sans-serif;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4c9be;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b5a99a;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ── No scrollbar utility ─────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Leaflet overrides ────────────────────────────────────────────── */
+.leaflet-container {
+  font-family: 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif !important;
+  z-index: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  font-size: 14px !important;
+}
+
+.dark .leaflet-popup-content-wrapper {
+  background: #1E293B !important;
+  color: #E2E8F0 !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: none !important;
+}
+
+.dark .leaflet-popup-tip {
+  background: #1E293B !important;
+}
+
+.leaflet-control-zoom a {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  color: #1F1B16 !important;
+}
+
+.dark .leaflet-control-zoom a {
+  background: #1E293B !important;
+  color: #E2E8F0 !important;
+  border-color: #334155 !important;
+}
+
+/* ── SOS pulse ring ───────────────────────────────────────────────── */
+@keyframes sosRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.sos-ring {
+  animation: sosRing 1.5s ease-out infinite;
+}
+
+/* ── Zone route glow on map ───────────────────────────────────────── */
+.zone-path-green { filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.4)); }
+.zone-path-orange { filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.4)); }
+.zone-path-red { filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.5)); }
+
+/* ── Card glass effect ────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(231, 223, 214, 0.6);
+}
+
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+/* ── Emergency number button ──────────────────────────────────────── */
+.emergency-btn {
+  @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-semibold text-sm transition-all duration-200;
+}
+.emergency-btn:active {
+  transform: scale(0.95);
+}
+
+/* ── Tab active indicator ─────────────────────────────────────────── */
+.tab-active {
+  position: relative;
+}
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 16%;
+  right: 16%;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #FF7A00;
+}
+
+/* ── User location pulse dot ──────────────────────────────────────── */
+@keyframes locationPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(59, 130, 246, 0); }
+}
+
+.user-location-dot {
+  width: 14px;
+  height: 14px;
+  background: #3B82F6;
+  border: 3px solid white;
+  border-radius: 50%;
+  animation: locationPulse 2s ease-in-out infinite;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* ── Safe area bottom padding ─────────────────────────────────────── */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── Custom POI icon ──────────────────────────────────────────────── */
+.custom-poi-icon {
+  background: none !important;
+  border: none !important;
+}
+
+/* ── Marquee animation ────────────────────────────────────────────── */
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
