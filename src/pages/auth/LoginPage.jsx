@@ -164,8 +164,8 @@ export default function LoginPage({ onOpenLanguageSelect, initialMobile = '' }) 
       } else {
         // Warkari / Pilgrim tab
         const isMatch =
-          (cleanInput === '9876543210' || cleanInput === '9876543211' || cleanInput === '9876543212') &&
-          (cleanPass === 'password123' || cleanPass === '123' || cleanPass === 'wari123');
+          (cleanInput === '9876543210' || cleanInput === '9876543211' || cleanInput === '9876543212' || cleanInput === '6666666666') &&
+          (cleanPass === 'password123' || cleanPass === '123' || cleanPass === 'wari123' || cleanPass === '123456');
 
         if (isMatch) {
           login(
