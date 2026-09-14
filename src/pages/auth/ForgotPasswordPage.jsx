@@ -221,8 +221,22 @@ export default function ForgotPasswordPage({
                   type="tel"
                   required
                   maxLength={10}
+                  inputMode="numeric"
+                  pattern="[0-9]*"
                   value={mobile}
-                  onChange={(e) => setMobile(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                  onChange={(e) => {
+                    const val = e.target.value.replace(/[^0-9]/g, '');
+                    setMobile(val.slice(0, 10));
+                  }}
+                  onKeyDown={(e) => {
+                    if (
+                      !/[0-9]/.test(e.key) && 
+                      !['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter'].includes(e.key) &&
+                      !e.ctrlKey && !e.metaKey
+                    ) {
+                      e.preventDefault();
+                    }
+                  }}
                   placeholder={t('auth.mobile_placeholder')}
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-wari-border dark:border-slate-700 bg-wari-bg/40 dark:bg-slate-950 text-wari-text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-wari-saffron/50 focus:border-wari-saffron transition-all"
                 />

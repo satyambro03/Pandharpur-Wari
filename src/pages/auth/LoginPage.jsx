@@ -312,12 +312,26 @@ export default function LoginPage({ onOpenLanguageSelect, initialMobile = '' }) 
                 type={activeTab === 'pilgrim' ? 'tel' : 'text'}
                 required
                 maxLength={activeTab === 'pilgrim' ? 10 : 20}
+                inputMode={activeTab === 'pilgrim' ? 'numeric' : 'text'}
+                pattern={activeTab === 'pilgrim' ? '[0-9]*' : undefined}
                 value={identifier}
                 onChange={(e) => {
                   if (activeTab === 'pilgrim') {
-                    setIdentifier(e.target.value.replace(/\D/g, '').slice(0, 10));
+                    const val = e.target.value.replace(/[^0-9]/g, '');
+                    setIdentifier(val.slice(0, 10));
                   } else {
                     setIdentifier(e.target.value);
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (activeTab === 'pilgrim') {
+                    if (
+                      !/[0-9]/.test(e.key) && 
+                      !['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Enter'].includes(e.key) &&
+                      !e.ctrlKey && !e.metaKey
+                    ) {
+                      e.preventDefault();
+                    }
                   }
                 }}
                 placeholder={
