@@ -119,8 +119,8 @@ export default function LoginPage({ onOpenLanguageSelect, initialMobile = '' }) 
       // 2. Strict Authorized Database/Credentials Verification
       if (activeTab === 'police') {
         const isMatch =
-          (cleanInputUpper === 'MH-123' || cleanInputUpper === 'MH123' || cleanInput === '9988776655') &&
-          (cleanPass === '123' || cleanPass.toLowerCase() === 'police123' || cleanPass === 'password123');
+          (cleanInputUpper === 'MH-123') &&
+          (cleanPass === '123');
 
         if (isMatch) {
           login(
