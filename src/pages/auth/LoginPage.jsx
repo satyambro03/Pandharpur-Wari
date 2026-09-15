@@ -141,8 +141,8 @@ export default function LoginPage({ onOpenLanguageSelect, initialMobile = '' }) 
         }
       } else if (activeTab === 'volunteer') {
         const isMatch =
-          (cleanInputUpper === 'VL-123' || cleanInputUpper === 'VL123' || cleanInput === '9123456780') &&
-          (cleanPass === '123' || cleanPass.toLowerCase() === 'vol12345' || cleanPass === 'password123');
+          (cleanInputUpper === 'VL-123') &&
+          (cleanPass === '123');
 
         if (isMatch) {
           login(
