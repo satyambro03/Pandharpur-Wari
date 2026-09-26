@@ -1,6 +1,7 @@
 <div align="center">
 
 
+
 # 🚩 वारकरी रक्षक (WariRakshak)
 ### *Smart Crowd Safety, Real-Time Pilgrimage Tracking & Tactical Emergency Response System*
 
