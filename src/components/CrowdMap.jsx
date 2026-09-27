@@ -481,12 +481,12 @@ export default function CrowdMap({
                       </div>
                     )}
 
-                    <a
+                    {/* <a
                       href={`https://www.google.com/maps/dir/?api=1&destination=${poi.latitude},${poi.longitude}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="py-1.5 px-2 bg-gradient-to-r from-wari-saffron to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-xl text-[11px] font-bold flex items-center justify-center gap-1 transition-all shadow-sm shadow-orange-500/20 text-center no-underline"
-                    >
+                    > */}
                       <Compass size={12} />
                       <span>{t('map.open_directions') ? 'Directions' : 'Maps'}</span>
                     </a>
